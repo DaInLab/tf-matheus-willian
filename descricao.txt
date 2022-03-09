@@ -1,0 +1,38 @@
+O projeto final consiste em realizar uma Análise Exploratória de Dados (AED) cujos dados estão contidos em duas planilhas armazenadas no formato Excel (.xlsx).
+Neste projeto, a AED deverá oferecer subsídios para identificar a característica dos casos e óbitos notificados de Covid-19 na cidade de Bauru apresentando um relatório que forneça:
+- distribuição dos óbitos de acordo com a idade dos pacientes:
+- verificar quais as características das principais comorbidades dos óbitos;
+- qual a variação periódica de tais óbitos;
+- tipos e tempo de permanência hospitalar;
+- relação entre óbitos ocorridos e a vacinação dos falecidos.
+
+
+1. covid_19_bauru_mortes: contém os dados relativos aos óbitos declarados.
+Colunas/variáveis:
+
+data_boletim: data de publicação do boletim epidemiológico. Formato dd/mm/aa.
+sexo: gênero do paciente. Categorias: masculino/feminino.
+idade: idade do paciente. Variável continua em anos.
+inicio_sintoma: data de início dos sintomas da síndrome respiratória aguda grave (SRAG). Formato dd/mm/aa.
+tipo_hosp: tipo de hospital. Categorias: público / privado.
+comorbidade: doenças graves do paciente. Texto com as doenças preexistentes separadas pela conjunção "e".
+data_obito: data declarada do óbito do paciente. Formato dd/mm/aa.
+doses_vacina: número de doses tomadas pelo paciente até a data de óbito.
+
+2. covid_19_bauru_casos_geral: contém os dados relativos aos casos de Covid-19 declarados.
+
+Colunas:
+
+data_boletim: data de publicação do boletim epidemiológico. Formato dd/mm/aa.
+casos_novos: número de novas infecções declaradas. Variável contínua.
+confirmacoes_total: Número total de casos novos detectados de Covid-19 até a data. Variável contínua.
+total_mortes: Número total de óbitos de Covid-19 até a data. Variável contínua.
+mortes_suspeitas: Número total de óbitos ocorridos até a data suspeitos se Covid-19 ou não. Variável contínua.
+aguardando_resultado: Número total de exames de Covid-19 aguardando confirmação até a data. Variável contínua.
+curados: Número total de pessoas que tiveram Covid-19 e estão curadas até a data. Variável contínua.
+negativos: Número total de pessoas que tiveram resultado negativo de exame de Covid-19 até a data. Variável contínua.
+vagas_uti_HE: Número de vagas de UTI oferecidas no hospital municipal dedicadas à covid para pacientes de Bauru.
+vagas_uti_HE_ocupadas: Número de leitos de UTI ocupados no hospital municipal dedicadas à covid.
+vagas_uti_regiao: Número de vagas de UTI oferecidas no hospital de referência regional dedicadas à covid para pacientes das cidades da região de Bauru.
+vagas_uti_regiao_ocupadas: Número de leitos de UTI ocupados no hospital de referência regional dedicadas à covid para pacientes das cidades da região de Bauru.
+mortes_espera_uti: Número de óbitos ocorridos em fila de espera para internação de covid-19.
