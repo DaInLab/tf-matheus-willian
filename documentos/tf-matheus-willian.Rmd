@@ -41,7 +41,6 @@ pct.sexo = paste0(pct.sexo, "%")
 
 graph.sex <- barplot(table(temp.sexo), main = "Óbitos por gênero",
         ylab = "Número de Óbitos", ylim = c(0,sum(unname(table(temp.sexo)))),
-        #legend.text = pct.sexo,
         names.arg = c("Feminino", "Masculino"))
 text(x = graph.sex, y = table(temp.sexo), label = pct.sexo, pos = 3, cex = 1.25, col = "red")
 axis(1, at=graph.sex, labels=table(temp.sexo), tick=F, las=1, line=-6.5, cex.axis=1.25)
@@ -152,4 +151,4 @@ Pode-se constatar que a maior frequência de óbitos foram das pessoas que ainda
 
 # Conclusão
 
-Com este trabalho foi possível analisar alguns dados referentes aos óbitos por conta da COVID-19 na cidade de Bauru. Pode-se concluir que o vírus afetou muita gente, não somente bauruenses. É necessário continuar seguindo os protocolos de segurança, principalmente aqueles que possuem comorbidades. Também é necessário se vacinar, pois como mostram as análises, o maior índice de óbitos são daqueles que não se vacinaram.
+Com este trabalho foi possível analisar alguns dados referentes aos óbitos por conta da COVID-19 na cidade de Bauru. Pode-se concluir que o vírus afetou muita gente, não somente bauruenses. É necessário continuar seguindo os protocolos de segurança, principalmente as pessoas que possuem algum tipo de comorbidade. Também é necessário se vacinar, pois como mostram as análises, o maior índice de óbitos são daqueles que não se vacinaram.
