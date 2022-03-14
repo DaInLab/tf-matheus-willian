@@ -97,6 +97,8 @@ plot(df.mortes$data_obito, main = "Variação Periódica de óbitos",
 
 ## Tipos e tempo de permanência hospitalar
 
+### Tipo de permanência hospitalar
+
 Foi realizado uma análise para verificar a quantidade de cada tipo de hospitalização. A tabela a seguir mostra os dados obtidos.
 
 ```{r echo=FALSE}
@@ -113,6 +115,21 @@ axis(1, at=graph.hosp, labels=table(temp.hosp), tick=F, las=1, line=-4.5, cex.ax
 ```
 
 Percebe-se que a maioria das hospitalizações foram em hospitais públicos, o que explica o rápido esgotamento de leitos nas unidades públicas de saúde.
+
+### Tempo de permanência hospitalar
+
+O próximo gráfico mostra o tempo de permanência hospitalar até o óbito.
+
+```{r echo=FALSE}
+library(ggplot2)
+library(readxl)
+dados <- read_excel("../dados/covid_19_bauru_mortes.xlsx")
+tempo <- difftime(as.Date(dados$'data_obito'), as.Date(dados$'inicio_sintoma'), units = "days")
+
+ggplot(as.data.frame(table(tempo)), aes(x = tempo, y = Freq),) + scale_x_discrete(guide = guide_axis(check.overlap = TRUE)) + labs(x = "Dias de internação", y = "Óbitos", fill = "Dias") + ggtitle("Tempo de permanência hospitalar") + theme(legend.position = "none") + geom_bar(stat="identity", position="stack") + geom_col(width=0.8)
+```
+
+É possível perceber que a maior parte dos pacientes que vieram a óbito ficaram internados aproximadamente entre 3 e 36 dias.
 
 ## Relação entre óbitos ocorridos e a vacinação dos falecidos
 

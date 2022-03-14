@@ -10,3 +10,8 @@ graph.hosp <- barplot(table(temp.hosp), main = "Óbitos por tipo de hospitaliza�
 text(x = graph.hosp, y = table(temp.hosp), label = pct.hosp, pos = 3, cex = 1.25, col = "red")
 axis(1, at=graph.hosp, labels=table(temp.hosp), tick=F, las=1, line=-4.5, cex.axis=1.25)
 dev.off()
+
+dados <- df.mortes
+tempo <- difftime(as.Date(dados$'data_obito'), as.Date(dados$'inicio_sintoma'), units = "days")
+
+ggplot(as.data.frame(table(tempo)), aes(x = tempo, y = Freq),) + scale_x_discrete(guide = guide_axis(check.overlap = TRUE)) + labs(x = "Dias de internação", y = "Óbitos", fill = "Dias") + ggtitle("Tempo de permanência hospitalar") + theme(legend.position = "none") + geom_bar(stat="identity", position="stack") + geom_col(width=0.8)

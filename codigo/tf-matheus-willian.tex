@@ -3,10 +3,11 @@
 \PassOptionsToPackage{hyphens}{url}
 %
 \documentclass[
+  brazilian,
 ]{article}
 \title{Trabalho final - IAED 2021}
-\author{Matheus Willian Polato}
-\date{14/03/2022}
+\author{Matheus Willian Polato - RA 181024462}
+\date{2021/2022}
 
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
@@ -41,51 +42,12 @@
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \hypersetup{
   pdftitle={Trabalho final - IAED 2021},
-  pdfauthor={Matheus Willian Polato},
+  pdfauthor={Matheus Willian Polato - RA 181024462},
+  pdflang={pt-br},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 \urlstyle{same} % disable monospaced font for URLs
 \usepackage[margin=1in]{geometry}
-\usepackage{color}
-\usepackage{fancyvrb}
-\newcommand{\VerbBar}{|}
-\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
-\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
-% Add ',fontsize=\small' for more characters per line
-\usepackage{framed}
-\definecolor{shadecolor}{RGB}{248,248,248}
-\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
-\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
-\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
-\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\BuiltInTok}[1]{#1}
-\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
-\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
-\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
-\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
-\newcommand{\ExtensionTok}[1]{#1}
-\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\ImportTok}[1]{#1}
-\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
-\newcommand{\NormalTok}[1]{#1}
-\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
-\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
-\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
-\newcommand{\RegionMarkerTok}[1]{#1}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \usepackage{graphicx}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -103,6 +65,16 @@
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifXeTeX
+  % Load polyglossia as late as possible: uses bidi with RTL langages (e.g. Hebrew, Arabic)
+  \usepackage{polyglossia}
+  \setmainlanguage[variant=brazilian]{portuguese}
+\else
+  \usepackage[main=brazilian]{babel}
+% get rid of language-specific shorthands (see #6817):
+\let\LanguageShortHands\languageshorthands
+\def\languageshorthands#1{}
+\fi
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
@@ -113,42 +85,151 @@
 \hypertarget{introduuxe7uxe3o}{%
 \section{Introdução}\label{introduuxe7uxe3o}}
 
-Este é o trabalho final da disciplina de Introdução à Análise
-Exploratória de Dados, ministrada pelo professor João Pedro Albino, no
-ano de 2021, pela Faculdade de Ciências - UNESP Câmpus de Bauru.
+Este documento refere-se ao trabalho final da disciplina de Introdução à
+Análise Exploratória de Dados, ministrada pelo professor João Pedro
+Albino, no ano de 2021/2022, pela Faculdade de Ciências - UNESP Câmpus
+de Bauru. O projeto consiste em realizar uma Análise Exploratória de
+Dados em relação a pandemia causada pelo Coronavírus (COVID-19) e como
+está impactando a vida das pessoas na cidade de Bauru. As análises
+realizadas mostram a distribuição de mortes de acordo com a idade dos
+pacientes, gênero, quais as características das comorbidades dos óbitos,
+a variação periódica de tais óbitos, tipos e tempo de permanência
+hospitalar dos pacientes e a relação entre óbitos ocorridos e a
+vacinação dos falecidos.
 
-This is an R Markdown document. Markdown is a simple formatting syntax
-for authoring HTML, PDF, and MS Word documents. For more details on
-using R Markdown see \url{http://rmarkdown.rstudio.com}.
+\hypertarget{anuxe1lise-exploratuxf3ria-dos-dados}{%
+\section{Análise Exploratória dos
+Dados}\label{anuxe1lise-exploratuxf3ria-dos-dados}}
 
-When you click the \textbf{Knit} button a document will be generated
-that includes both content as well as the output of any embedded R code
-chunks within the document. You can embed an R code chunk like this:
+\hypertarget{uxf3bitos-entre-guxeaneros}{%
+\subsection{Óbitos entre gêneros}\label{uxf3bitos-entre-guxeaneros}}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{summary}\NormalTok{(cars)}
-\end{Highlighting}
-\end{Shaded}
+Foi realizada uma análise para verificar qual a taxa de óbitos entre os
+gêneros. O gráfico a seguir mostra o que foi obtido.
+
+\includegraphics{tf-matheus-willian_files/figure-latex/unnamed-chunk-1-1.pdf}
+
+Pode-se verificar que a maior parte dos óbitos são do gênero masculino,
+com 57\%, seguido do gênero feminino, com 43\%.
+
+\hypertarget{distribuiuxe7uxe3o-dos-uxf3bitos-de-acordo-com-a-idade-dos-pacientes}{%
+\subsection{Distribuição dos óbitos de acordo com a idade dos
+pacientes}\label{distribuiuxe7uxe3o-dos-uxf3bitos-de-acordo-com-a-idade-dos-pacientes}}
+
+Foi realizado uma análise para verificar qual a distribuição dos óbitos
+de acordo com a idade dos pacientes.
+\includegraphics{../graficos/histograma_obitos_por_idade.png}
+
+Pode-se constatar no histograma que a maior frequência de mortes está
+concentrada entre as idades de 50 a 90 anos, seguida pela idade de 40 a
+50. Isso mostra que o coronavírus tem mais impacto em pessoas com idades
+mais avançadas.
+
+\hypertarget{caracteruxedsticas-das-principais-comorbidades-dos-uxf3bitos}{%
+\subsection{Características das principais comorbidades dos
+óbitos}\label{caracteruxedsticas-das-principais-comorbidades-dos-uxf3bitos}}
+
+Foi realizado uma análise para verificar quais as características das
+principais comorbidades dos óbitos. A tabela e o gráfico a seguir
+mostram quais as comorbidades que mais sofreram óbitos.
 
 \begin{verbatim}
-##      speed           dist       
-##  Min.   : 4.0   Min.   :  2.00  
-##  1st Qu.:12.0   1st Qu.: 26.00  
-##  Median :15.0   Median : 36.00  
-##  Mean   :15.4   Mean   : 42.98  
-##  3rd Qu.:19.0   3rd Qu.: 56.00  
-##  Max.   :25.0   Max.   :120.00
+##                Comorbidades Freq
+## 140             hipertensão   80
+## 15              cardiopatia   69
+## 50                 diabetes   61
+## 86   diabetes e hipertensão   55
+## 183               obesidade   50
+## 166 hipertensão e obesidade   41
 \end{verbatim}
 
-\hypertarget{including-plots-the-fifi}{%
-\subsection{Including Plots The Fifi}\label{including-plots-the-fifi}}
+\begin{figure}
+\centering
+\includegraphics{../graficos/caracteristicas_principais_comorbidades_obitos.png}
+\caption{Características das principais comorbidades dos óbitos}
+\end{figure}
 
-You can also embed plots, for example:
+Pode-se constatar que hipertensão é a comorbidade mais atingida pelo
+coronavírus, com um total de 80 óbitos. É possível verificar também que
+a hipertensão, em conjunto com outra comorbidade, também está entre as 6
+comorbidades mais atingidas. Ocorreram 55 óbitos de pessoas que possuíam
+diabetes e hipertensão e 41 óbitos de pessoas que possuíam hipertensão e
+obesidade.
 
-\includegraphics{tf-matheus-willian_files/figure-latex/pressure-1.pdf}
+\hypertarget{variauxe7uxe3o-periuxf3dica-dos-uxf3bitos}{%
+\subsection{Variação periódica dos
+óbitos}\label{variauxe7uxe3o-periuxf3dica-dos-uxf3bitos}}
 
-Note that the \texttt{echo\ =\ FALSE} parameter was added to the code
-chunk to prevent printing of the R code that generated the plot.
+Foi realizado uma análise para verificar a variação periódica dos
+óbitos. O gráfico mostra o que foi obtido.
+
+\includegraphics{tf-matheus-willian_files/figure-latex/unnamed-chunk-3-1.pdf}
+
+É possível perceber que os óbitos não ficaram estáveis em nenhum
+momento, a linha está em uma constante crescente, porém menos que no
+período antes de 2021. Isso mostra que a vacinação é sim eficaz, mas
+ainda é necessário uma atenção por parte da população, para cada um
+fazer sua parte, utilizar máscara e evitar aglomerações.
+
+\hypertarget{tipos-e-tempo-de-permanuxeancia-hospitalar}{%
+\subsection{Tipos e tempo de permanência
+hospitalar}\label{tipos-e-tempo-de-permanuxeancia-hospitalar}}
+
+\hypertarget{tipo-de-permanuxeancia-hospitalar}{%
+\subsubsection{Tipo de permanência
+hospitalar}\label{tipo-de-permanuxeancia-hospitalar}}
+
+Foi realizado uma análise para verificar a quantidade de cada tipo de
+hospitalização. A tabela a seguir mostra os dados obtidos.
+
+\includegraphics{tf-matheus-willian_files/figure-latex/unnamed-chunk-4-1.pdf}
+
+Percebe-se que a maioria das hospitalizações foram em hospitais
+públicos, o que explica o rápido esgotamento de leitos nas unidades
+públicas de saúde.
+
+\hypertarget{tempo-de-permanuxeancia-hospitalar}{%
+\subsubsection{Tempo de permanência
+hospitalar}\label{tempo-de-permanuxeancia-hospitalar}}
+
+O próximo gráfico mostra o tempo de permanência hospitalar até o óbito.
+
+\includegraphics{tf-matheus-willian_files/figure-latex/unnamed-chunk-5-1.pdf}
+
+É possível perceber que a maior parte dos pacientes que vieram a óbito
+ficaram internados aproximadamente entre 3 e 36 dias.
+
+\hypertarget{relauxe7uxe3o-entre-uxf3bitos-ocorridos-e-a-vacinauxe7uxe3o-dos-falecidos}{%
+\subsection{Relação entre óbitos ocorridos e a vacinação dos
+falecidos}\label{relauxe7uxe3o-entre-uxf3bitos-ocorridos-e-a-vacinauxe7uxe3o-dos-falecidos}}
+
+Foi realizado uma análise para verificar a relação entre os óbitos e a
+vacinação dos falecidos. A tabela a seguir mostra os dados obtidos.
+
+\begin{verbatim}
+##   Doses Freq
+## 1     0 1020
+## 2     1    5
+## 3     2   66
+## 4     3   51
+\end{verbatim}
+
+Pode-se constatar que a maior frequência de óbitos foram das pessoas que
+ainda não haviam tomado nenhuma dose da vacina, com um total de 1020
+pessoas. A segunda maior frequência é de pessoas que tomaram 2 doses,
+com um total de 66. Pessoas que tomaram apenas uma dose da vacina têm um
+total de 5. Uma observação para isso é que, entre essas pessoas, pode
+conter aquelas que tomaram a dose única, ou seja, estavam totalmente
+imunizadas.
+
+\hypertarget{conclusuxe3o}{%
+\section{Conclusão}\label{conclusuxe3o}}
+
+Com este trabalho foi possível analisar alguns dados referentes aos
+óbitos por conta da COVID-19 na cidade de Bauru. Pode-se concluir que o
+vírus afetou muita gente, não somente bauruenses. É necessário continuar
+seguindo os protocolos de segurança, principalmente aqueles que possuem
+comorbidades. Também é necessário se vacinar, pois como mostram as
+análises, o maior índice de óbitos são daqueles que não se vacinaram.
 
 \end{document}
