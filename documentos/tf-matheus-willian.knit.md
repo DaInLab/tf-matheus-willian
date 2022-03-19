@@ -15,9 +15,7 @@ body {
 text-align: justify}
 </style>
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+
 
 # Introdução
 
@@ -32,21 +30,7 @@ As análises realizadas mostram a distribuição de mortes de acordo com a idade
 
 Foi realizada uma análise para verificar qual a taxa de óbitos entre os gêneros. O gráfico a seguir mostra o que foi obtido.
 
-```{r echo=FALSE}
-library(readxl)
-
-df.mortes <- read_excel("../dados/covid_19_bauru_mortes.xlsx", col_types = c("date", "text", "numeric", "date","text","text", "date", "numeric"))
-
-temp.sexo <- df.mortes$sexo[!is.na(df.mortes$sexo)]
-pct.sexo = round(unname(table(temp.sexo)) / sum(unname(table(temp.sexo)))*100,0)
-pct.sexo = paste0(pct.sexo, "%")
-
-graph.sex <- barplot(table(temp.sexo), main = "Óbitos por gênero",
-        ylab = "Número de Óbitos", ylim = c(0,sum(unname(table(temp.sexo)))),
-        names.arg = c("Feminino", "Masculino"))
-text(x = graph.sex, y = table(temp.sexo), label = pct.sexo, pos = 3, cex = 1.25, col = "red")
-axis(1, at=graph.sex, labels=table(temp.sexo), tick=F, las=1, line=-6.5, cex.axis=1.25)
-```
+![](tf-matheus-willian_files/figure-latex/unnamed-chunk-1-1.pdf)<!-- --> 
 
 Pode-se verificar que a maior parte dos óbitos são do gênero masculino, com 57%, seguido do gênero feminino, com 43%.
 
@@ -62,18 +46,15 @@ Pode-se constatar no histograma que a maior frequência de mortes está concentr
 Foi realizado uma análise para verificar quais as características das principais comorbidades dos óbitos.
 A tabela e o gráfico a seguir mostram quais as comorbidades que mais sofreram óbitos.
 
-```{r echo=FALSE}
-library(readxl)
 
-planilha <- read_excel("../dados/covid_19_bauru_mortes.xlsx")
-Comorbidades <- planilha$'comorbidade'
-
-dataFrame <- data.frame(table(Comorbidades))
-Qtde <- dataFrame$Freq
-
-sortedDataFrame <- dataFrame[order(-Qtde),]
-firstSixRows <- head(sortedDataFrame)
-firstSixRows
+```
+##                Comorbidades Freq
+## 140             hipertensão   80
+## 15              cardiopatia   69
+## 50                 diabetes   61
+## 86   diabetes e hipertensão   55
+## 183               obesidade   50
+## 166 hipertensão e obesidade   41
 ```
 
 ![Características das principais comorbidades dos óbitos](../graficos/caracteristicas_principais_comorbidades_obitos.png)
@@ -85,14 +66,7 @@ Pode-se constatar que hipertensão é a comorbidade mais atingida pelo coronaví
 
 Foi realizado uma análise para verificar a variação periódica dos óbitos. O gráfico mostra o que foi obtido.
 
-```{r echo=FALSE}
-library(readxl)
-df.mortes <- read_excel("../dados/covid_19_bauru_mortes.xlsx", 
-                        col_types = c("date", "text", "numeric", "date","text","text", "date", "numeric"))
-
-plot(df.mortes$data_obito, main = "Variação Periódica de óbitos", 
-     xlab = "Óbitos ocorridos", ylab = "Período/datas")
-```
+![](tf-matheus-willian_files/figure-latex/unnamed-chunk-3-1.pdf)<!-- --> 
 
 É possível perceber que os óbitos não ficaram estáveis em nenhum momento, a linha está em uma constante crescente, porém menos que no período antes de 2021. Isso mostra que a vacinação é sim eficaz, mas ainda é necessário uma atenção por parte da população, para cada um fazer sua parte, utilizar máscara e evitar aglomerações.
 
@@ -102,18 +76,7 @@ plot(df.mortes$data_obito, main = "Variação Periódica de óbitos",
 
 Foi realizado uma análise para verificar a quantidade de cada tipo de hospitalização. A tabela a seguir mostra os dados obtidos.
 
-```{r echo=FALSE}
-library(readxl)
-df.mortes <- read_excel("../dados/covid_19_bauru_mortes.xlsx", 
-                        col_types = c("date", "text", "numeric", "date","text","text", "date", "numeric"))
-
-temp.hosp <- df.mortes$tipo_hosp[!is.na(df.mortes$tipo_hosp)]
-pct.hosp = round(unname(table(temp.hosp)) / sum(unname(table(temp.hosp)))*100,0)
-pct.hosp = paste0(pct.hosp, "%")
-graph.hosp <- barplot(table(temp.hosp), main = "Óbitos por tipo de hospitalização", ylab = "Número de Óbitos", ylim = c(0,sum(unname(table(temp.hosp)))), names.arg = c("Privado", "Público")) 
-text(x = graph.hosp, y = table(temp.hosp), label = pct.hosp, pos = 3, cex = 1.25, col = "red")
-axis(1, at=graph.hosp, labels=table(temp.hosp), tick=F, las=1, line=-4.5, cex.axis=1.25)
-```
+![](tf-matheus-willian_files/figure-latex/unnamed-chunk-4-1.pdf)<!-- --> 
 
 Percebe-se que a maioria das hospitalizações foram em hospitais públicos, o que explica o rápido esgotamento de leitos nas unidades públicas de saúde.
 
@@ -121,14 +84,7 @@ Percebe-se que a maioria das hospitalizações foram em hospitais públicos, o q
 
 O próximo gráfico mostra o tempo de permanência hospitalar até o óbito.
 
-```{r echo=FALSE}
-library(ggplot2)
-library(readxl)
-dados <- read_excel("../dados/covid_19_bauru_mortes.xlsx")
-tempo <- difftime(as.Date(dados$'data_obito'), as.Date(dados$'inicio_sintoma'), units = "days")
-
-ggplot(as.data.frame(table(tempo)), aes(x = tempo, y = Freq),) + scale_x_discrete(guide = guide_axis(check.overlap = TRUE)) + labs(x = "Dias de internação", y = "Óbitos", fill = "Dias") + ggtitle("Tempo de permanência hospitalar") + theme(legend.position = "none") + geom_bar(stat="identity", position="stack") + geom_col(width=0.8)
-```
+![](tf-matheus-willian_files/figure-latex/unnamed-chunk-5-1.pdf)<!-- --> 
 
 É possível perceber que a maior parte dos pacientes que vieram a óbito ficaram internados aproximadamente entre 3 e 36 dias.
 
@@ -136,17 +92,13 @@ ggplot(as.data.frame(table(tempo)), aes(x = tempo, y = Freq),) + scale_x_discret
 
 Foi realizado uma análise para verificar a relação entre os óbitos e a vacinação dos falecidos. A tabela a seguir mostra os dados obtidos.
 
-```{r echo=FALSE}
-# A planilha original foi alterada substituindo os espaços em branco por 0 na coluna 'doses_vacina'.
-# Dessa forma a tabela fica da seguinte forma apresentada.
 
-library(readxl)
-options(max.print=1200)
-
-planilha <- read_excel("../dados/covid_19_bauru_mortes.xlsx")
-Doses <- planilha$'doses_vacina'
-
-as.data.frame(table(Doses))
+```
+##   Doses Freq
+## 1     0 1020
+## 2     1    5
+## 3     2   66
+## 4     3   51
 ```
 
 Pode-se constatar que a maior frequência de óbitos foram das pessoas que ainda não haviam tomado nenhuma dose da vacina, com um total de 1020 pessoas. A segunda maior frequência é de pessoas que tomaram 2 doses, com um total de 66. Pessoas que tomaram apenas uma dose da vacina têm um total de 5. Uma observação para isso é que, entre essas pessoas, pode conter aquelas que tomaram a dose única, ou seja, estavam totalmente imunizadas.
