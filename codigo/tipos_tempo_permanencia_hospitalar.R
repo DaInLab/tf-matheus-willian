@@ -14,4 +14,13 @@ dev.off()
 dados <- df.mortes
 tempo <- difftime(as.Date(dados$'data_obito'), as.Date(dados$'inicio_sintoma'), units = "days")
 
-ggplot(as.data.frame(table(tempo)), aes(x = tempo, y = Freq),) + scale_x_discrete(guide = guide_axis(check.overlap = TRUE)) + labs(x = "Dias de internação", y = "Óbitos", fill = "Dias") + ggtitle("Tempo de permanência hospitalar") + theme(legend.position = "none") + geom_bar(stat="identity", position="stack") + geom_col(width=0.8)
+library(ggplot2)
+png(filename = "./graficos/tempo_permanência_hospitalar.png", width = 800, height = 600)
+ggplot(as.data.frame(table(tempo)), 
+       aes(x = tempo, y = Freq),) + 
+  scale_x_discrete(guide = guide_axis(check.overlap = TRUE)) + 
+  labs(x = "Dias de internação", y = "Óbitos", fill = "Dias") + 
+  ggtitle("Tempo de permanência hospitalar") + theme(legend.position = "none") + 
+  geom_bar(stat="identity", position="stack") + geom_col(width=0.8)
+dev.off()
+
